@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PHYA - Elite on-demand personal protection. Connect with South Africa's most trusted PSIRA-registered professionals.">
+    <title>PHYA - Your Safety. Our Commitment</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body class="bg-[#212121] text-white overflow-x-hidden">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-16">
+            <div class="flex items-center justify-between py-6">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="/logo.svg" alt="PHYA Logo" class="h-8 w-auto">
+                    <span class="text-xl font-bold text-white">PHYA</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-white font-medium hover:text-gold transition-colors">Home</a>
+                    <a href="#how-it-works" class="text-gray-400 hover:text-gold transition-colors">How It Works</a>
+                    <a href="#features" class="text-gray-400 hover:text-gold transition-colors">Features</a>
+                    <a href="#screenshots" class="text-gray-400 hover:text-gold transition-colors">Screenshots</a>
+                    <a href="#pilot-program" class="text-gray-400 hover:text-gold transition-colors">Pilot Program</a>
+                    <a href="#contact" class="text-gray-400 hover:text-gold transition-colors">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-white p-2" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#212121]/95 backdrop-blur-md">
+            <div class="container mx-auto px-4 py-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="#home" class="text-white font-medium hover:text-gold transition-colors">Home</a>
+                    <a href="#how-it-works" class="text-gray-400 hover:text-gold transition-colors">How It Works</a>
+                    <a href="#features" class="text-gray-400 hover:text-gold transition-colors">Features</a>
+                    <a href="#screenshots" class="text-gray-400 hover:text-gold transition-colors">Screenshots</a>
+                    <a href="#pilot-program" class="text-gray-400 hover:text-gold transition-colors">Pilot Program</a>
+                    <a href="#contact" class="text-gray-400 hover:text-gold transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen pt-24 pb-12 overflow-hidden bg-[#212121]">
+        <!-- Header Graphic -->
+        <img src="/header-graphic.svg" alt="" class="hidden lg:block absolute top-0 right-[15%] w-auto h-[700px] opacity-30 z-0" aria-hidden="true">
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-24 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-6rem)]">
+
+                <!-- Left Content -->
+                <div class="space-y-8 text-center lg:text-left">
+                    <div class="text-sm font-semibold text-gold uppercase tracking-wider fade-in-left">
+                        Protection. Precision. Phya.
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight fade-in-left">
+                        Elite On-Demand <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-light">
+                            Personal Protection
+                        </span>
+                    </h1>
+
+                    <p class="text-gray-400 text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 fade-in-left">
+                        Technology-driven, discreet, and powerful. Phya connects you with South Africa's most trusted, PSIRA-registered professionals. Experience security redefined.
+                    </p>
+
+                    <!-- CTA Button -->
+                    <div class="fade-in-left">
+                        <a href="#contact" class="inline-block px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/50 transition-all duration-300 transform hover:scale-105">
+                            Join Waitlist
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Content - Simplified Mobile Mockup -->
+                <div class="relative flex justify-center lg:justify-end fade-in-right" id="phone-mockup">
+                    <div class="relative max-w-[280px] w-full">
+                        <!-- Phone Frame -->
+                        <div class="phone-frame rounded-[3rem] p-3">
+                            <!-- Phone Screen -->
+                            <div class="phone-screen rounded-[2.5rem] overflow-hidden aspect-[9/19]">
+                                <!-- Map Background -->
+                                <img src="/IMG_0166.jpg" alt="PHYA App Interface" class="h-full w-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slider Dots -->
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 slider-dots">
+                        <div class="slider-dot active"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">HOW IT WORKS</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Simple, Fast & Secure</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Request elite personal protection in three simple steps. Our platform connects you with verified PSIRA professionals instantly.</p>
+            </div>
+
+            <!-- 3 Steps Grid -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-2xl border-2 border-gold/30 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-16 h-16 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">Step 1</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">Request Service</h3>
+                    <p class="text-gray-400">Select your location and level of protection needed through our intuitive app interface.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-2xl border-2 border-gold/30 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-16 h-16 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">Step 2</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">Get Matched</h3>
+                    <p class="text-gray-400">Our algorithm instantly connects you with verified PSIRA-registered protection officers nearby.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-2xl border-2 border-gold/30 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-16 h-16 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">Step 3</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">Stay Protected</h3>
+                    <p class="text-gray-400">Your dedicated protection officer arrives discreetly to ensure your safety and peace of mind.</p>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="mt-16 flex justify-center">
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-gold to-gold-light rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">PSIRA Verified Officers</h4>
+                            <p class="text-gray-400">All protection professionals are thoroughly verified and registered with PSIRA for your peace of mind</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-gold to-gold-light rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Instant Response</h4>
+                            <p class="text-gray-400">Real-time matching with nearby officers ensures rapid deployment when you need protection most</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#212121]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="text-center mb-12">
+                <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">About Phya</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Redefining Personal Protection</h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    Phya (Pty) Ltd is built upon safety, technology, and trust. Our platform leverages advanced verification for PSIRA professionals, seamlessly blending luxury, reliability, and innovation. Empowered by technology and committed to absolute discretion, we redefine personal protection for today's elite.
+                </p>
+                <p class="text-gray-500 text-sm italic">
+                    Your Safety. Our Commitment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">FEATURES</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Discover Powerful Features</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Unleash the power of our platform with a multitude of powerful features, empowering you to achieve your goals.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-xl border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Fully functional</h3>
+                    <p class="text-gray-400 text-sm">The phrasal sequence of the is now so that many campaign and benefit</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-xl border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Secure Data</h3>
+                    <p class="text-gray-400 text-sm">The phrasal sequence of the is now so that many campaign and benefit</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-xl border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Track Location</h3>
+                    <p class="text-gray-400 text-sm">The phrasal sequence of the is now so that many campaign and benefit</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="text-center group">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold-light/20 rounded-xl border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Data Analyse</h3>
+                    <p class="text-gray-400 text-sm">The phrasal sequence of the is now so that many campaign and benefit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Apps Section -->
+    <section id="mobile-apps" class="py-20 bg-[#212121]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Phone Mockup -->
+                <div class="flex justify-center lg:justify-start">
+                    <img src="/IMG_0164.jpg" alt="PHYA Mobile App" class="rounded-3xl shadow-2xl max-w-sm w-full">
+                </div>
+
+                <!-- Right: Content -->
+                <div>
+                    <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">MOBILE APPS</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Coming Soon to iOS & Android</h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        PHYA will be available on both App Store and Google Play. Join our waitlist to be notified when we launch and get exclusive early access.
+                    </p>
+
+                    <!-- App Store Badges with Coming Soon -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="relative inline-block opacity-60">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Coming Soon on App Store" class="h-12">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="bg-black/80 text-gold text-xs font-bold px-3 py-1 rounded-full">Coming Soon</span>
+                            </div>
+                        </div>
+                        <div class="relative inline-block opacity-60">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Coming Soon on Google Play" class="h-12">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="bg-black/80 text-gold text-xs font-bold px-3 py-1 rounded-full">Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3 p-4 bg-[#1a1a1a] rounded-lg border border-gold/20">
+                        <div class="w-10 h-10 bg-gradient-to-br from-gold to-gold-light rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-white font-semibold mb-1">Be the first to know when we launch</p>
+                            <a href="#contact" class="inline-flex items-center text-gold hover:text-gold-light transition-colors text-sm font-semibold">
+                                Join Waitlist
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="py-20 bg-[#212121]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">SCREENSHOTS</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Simple & Beautiful Interface</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Unleash the power of our platform with a multitude of powerful features, empowering you to achieve your goals.
+                </p>
+            </div>
+
+            <!-- Screenshots Carousel -->
+            <div class="relative max-w-6xl mx-auto">
+                <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide justify-center px-12" id="screenshots-container">
+                    <div class="flex-shrink-0 w-64 snap-center">
+                        <img src="/IMG_0166.jpg" alt="PHYA Screenshot 1" class="rounded-3xl shadow-2xl w-full h-auto">
+                    </div>
+                    <div class="flex-shrink-0 w-64 snap-center">
+                        <img src="/IMG_0167.jpg" alt="PHYA Screenshot 2" class="rounded-3xl shadow-2xl w-full h-auto">
+                    </div>
+                    <div class="flex-shrink-0 w-64 snap-center">
+                        <img src="/IMG_0166.jpg" alt="PHYA Screenshot 3" class="rounded-3xl shadow-2xl w-full h-auto">
+                    </div>
+                    <div class="flex-shrink-0 w-64 snap-center">
+                        <img src="/IMG_0167.jpg" alt="PHYA Screenshot 4" class="rounded-3xl shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button id="scroll-left" class="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-gold rounded-full flex items-center justify-center shadow-lg hover:bg-gold-light transition-colors z-10">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button id="scroll-right" class="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-gold rounded-full flex items-center justify-center shadow-lg hover:bg-gold-light transition-colors z-10">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: FAQs -->
+                <div>
+                    <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">FAQS</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Have Questions? Look Here</h2>
+                    <p class="text-gray-400 mb-12">
+                        Get answers to common questions about PHYA's elite personal protection platform and services.
+                    </p>
+
+                    <!-- FAQ Items -->
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-700 pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left group">
+                                <span class="text-lg font-semibold text-gold">How does PHYA work?</span>
+                                <svg class="w-5 h-5 text-gold transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div class="faq-answer mt-4 text-gray-400">
+                                PHYA connects you with PSIRA-registered protection officers through our app. Simply select your pickup and drop-off locations, choose your level of service, and our algorithm matches you with a verified professional nearby for immediate deployment.
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-700 pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left group">
+                                <span class="text-lg font-semibold text-white group-hover:text-gold transition-colors">Are all protection officers verified?</span>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden mt-4 text-gray-400">
+                                Yes, absolutely. Every protection officer on our platform is PSIRA-registered and undergoes thorough background verification. We ensure all professionals meet the highest security standards before joining PHYA.
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-700 pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left group">
+                                <span class="text-lg font-semibold text-white group-hover:text-gold transition-colors">How do I join the Gauteng pilot program?</span>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden mt-4 text-gray-400">
+                                Fill out the contact form on this page or click "Apply Now" in the Pilot Program section. Both clients seeking protection and registered PSIRA officers can apply for exclusive early access to our platform in Gauteng.
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-700 pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left group">
+                                <span class="text-lg font-semibold text-white group-hover:text-gold transition-colors">What areas does PHYA currently serve?</span>
+                                <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden mt-4 text-gray-400">
+                                We're launching our pilot program in Gauteng, with services available in Johannesburg, Pretoria, and surrounding areas. PHYA will expand to other provinces based on demand and successful pilot completion.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Phone Mockup -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-full blur-3xl"></div>
+                        <img src="/IMG_0166.jpg" alt="PHYA App" class="relative rounded-3xl shadow-2xl max-w-sm w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilot Program Section -->
+    <section id="pilot-program" class="py-20 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-sm font-semibold text-gold uppercase tracking-wider mb-4">PILOT PROGRAM: GAUTENG</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Apply for Pilot</h2>
+                <p class="text-gray-400 text-lg mb-12">
+                    Clients & officers: Be first to experience Phya's elite platform in Gauteng.
+                </p>
+
+                <a href="#contact" class="inline-block px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/50 transition-all duration-300 transform hover:scale-105">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Waitlist Section -->
+    <section id="contact" class="py-20 bg-[#212121]">
+        <div class="container mx-auto px-6 lg:px-24">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Contact Phya</h2>
+                    <p class="text-gray-400 text-xl">Future of protection starts here.</p>
+                </div>
+
+                <form id="waitlistForm" class="space-y-6">
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Name</label>
+                        <input type="text" id="name" placeholder="Jane Smith" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Email</label>
+                        <input type="email" id="email" placeholder="jane@framer.com" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Message</label>
+                        <textarea id="message" rows="4" placeholder="Your message..." class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/50 transition-all duration-300 transform hover:scale-105">
+                        Submit
+                    </button>
+                </form>
+
+                <div id="formMessage" class="form-message mt-6"></div>
+
+                <div class="mt-12 text-center space-y-2">
+                    <p class="text-white font-semibold">Location: Waterfall, Midrand</p>
+                    <p class="text-gray-400">Email: admin@phya.co.za</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1a1a] border-t border-gray-800">
+        <div class="container mx-auto px-6 lg:px-24 py-12">
+            <!-- Logo & Description Centered -->
+            <div class="max-w-2xl mx-auto text-center mb-8">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <img src="/logo.svg" alt="PHYA Logo" class="h-10 w-auto">
+                    <span class="text-2xl font-bold text-white">PHYA</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-6">
+                    Elite on-demand personal protection. Technology-driven, discreet, and powerful.
+                </p>
+            </div>
+
+            <!-- Contact Info Centered -->
+            <div class="text-center mb-8 space-y-3">
+                <p class="text-gray-400 text-sm">
+                    <span class="text-white font-medium">Location:</span> Waterfall, Midrand, Gauteng, South Africa
+                </p>
+                <p class="text-gray-400 text-sm">
+                    <span class="text-white font-medium">Email:</span>
+                    <a href="mailto:admin@phya.co.za" class="text-gold hover:text-gold-light transition-colors">admin@phya.co.za</a>
+                </p>
+            </div>
+
+            <!-- Centered Copyright -->
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-gray-500 text-sm text-center">
+                    © 2025 <a href="/" class="text-gray-400 hover:text-gold transition-colors">PHYA</a>. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PHYA - Join our waiting list for exclusive early access">
+    <title>PHYA - Coming Soon</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="header-custom">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="logo">PHYA</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#waitlist">Join Waitlist</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h1 class="hero-title">Coming Soon</h1>
+            <p class="hero-subtitle">Something amazing is on the way. Join our waiting list for exclusive early access.</p>
+            <a href="#waitlist" class="cta-button">Join the Waiting List</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">About PHYA</h2>
+            <p class="section-text">We're building something extraordinary. Stay tuned for more details.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">What to Expect</h2>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Innovation</h3>
+                    <p class="feature-text">Cutting-edge technology designed for the future.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3 class="feature-title">Smart Solutions</h3>
+                    <p class="feature-text">Intelligent features that adapt to your needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">User-Focused</h3>
+                    <p class="feature-text">Built with your experience in mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="section-title">Join the Waiting List</h2>
+            <p class="section-text mb-8">Be the first to know when we launch. Sign up for exclusive early access.</p>
+
+            <form id="waitlistForm" class="waitlist-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Phone Number (Optional)">
+                </div>
+                <button type="submit" class="submit-button">Join Waiting List</button>
+            </form>
+
+            <div id="formMessage" class="form-message"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 PHYA. All rights reserved.</p>
+            <div class="mt-4 social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
