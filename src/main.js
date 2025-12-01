@@ -1,9 +1,14 @@
 /**
  * PHYA Website - Vanilla JavaScript (Vite)
- * Features: Smooth scrolling, form validation, animations, and interactive elements
+ * Features: Tabbed forms, Tredicik API integration, smooth scrolling, animations
  */
 
 import './style.css';
+
+// Configuration
+const API_BASE_URL = 'https://backend.tredicik.com/api/v1'; // Production
+// const API_BASE_URL = 'http://localhost:8080/api/v1'; // Development
+const TENANT_DOMAIN = 'phya';
 
 // Console welcome message
 console.log('%cWelcome to PHYA!', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
@@ -12,8 +17,235 @@ console.log('%cWe\'re building something amazing. Stay tuned!', 'color: #666; fo
 document.addEventListener('DOMContentLoaded', function() {
     console.log('PHYA Website Loaded!');
 
+    // ========================================================================
+    // TAB FUNCTIONALITY
+    // ========================================================================
+
+    const clientTabBtn = document.getElementById('clientTabBtn');
+    const providerTabBtn = document.getElementById('providerTabBtn');
+    const clientForm = document.getElementById('clientForm');
+    const providerForm = document.getElementById('providerForm');
+
+    if (clientTabBtn && providerTabBtn && clientForm && providerForm) {
+        // Client tab click
+        clientTabBtn.addEventListener('click', () => {
+            // Update buttons
+            clientTabBtn.classList.add('active', 'bg-gradient-to-r', 'from-gold', 'to-gold-light', 'text-black');
+            clientTabBtn.classList.remove('bg-[#1a1a1a]', 'text-gray-400', 'border', 'border-gray-700');
+
+            providerTabBtn.classList.remove('active', 'bg-gradient-to-r', 'from-gold', 'to-gold-light', 'text-black');
+            providerTabBtn.classList.add('bg-[#1a1a1a]', 'text-gray-400', 'border', 'border-gray-700');
+
+            // Update forms
+            clientForm.classList.remove('hidden');
+            clientForm.classList.add('active');
+            providerForm.classList.add('hidden');
+            providerForm.classList.remove('active');
+        });
+
+        // Provider tab click
+        providerTabBtn.addEventListener('click', () => {
+            // Update buttons
+            providerTabBtn.classList.add('active', 'bg-gradient-to-r', 'from-gold', 'to-gold-light', 'text-black');
+            providerTabBtn.classList.remove('bg-[#1a1a1a]', 'text-gray-400', 'border', 'border-gray-700');
+
+            clientTabBtn.classList.remove('active', 'bg-gradient-to-r', 'from-gold', 'to-gold-light', 'text-black');
+            clientTabBtn.classList.add('bg-[#1a1a1a]', 'text-gray-400', 'border', 'border-gray-700');
+
+            // Update forms
+            providerForm.classList.remove('hidden');
+            providerForm.classList.add('active');
+            clientForm.classList.add('hidden');
+            clientForm.classList.remove('active');
+        });
+    }
+
+    // ========================================================================
+    // FORM SUBMISSIONS - CLIENT FORM
+    // ========================================================================
+
+    const clientFormElement = document.getElementById('clientForm');
+    const formMessage = document.getElementById('formMessage');
+
+    if (clientFormElement) {
+        clientFormElement.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitButton = clientFormElement.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            try {
+                // Disable submit button
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                // Collect form data
+                const formData = {
+                    email: document.getElementById('client-email').value.trim(),
+                    name: document.getElementById('client-name').value.trim(),
+                    phone: document.getElementById('client-phone').value.trim() || null,
+                    segment: 'client',
+                    location: document.getElementById('client-city').value.trim() || null,
+                    message: document.getElementById('client-message').value.trim() || null,
+                    pilot_program_applicant: document.getElementById('client-pilot').checked,
+                    pilot_region: document.getElementById('client-pilot').checked ? 'Gauteng' : null,
+                    pilot_city: document.getElementById('client-city').value.trim() || null,
+                    referral_source: 'phya.co.za_landing_page',
+                    utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+                    utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
+                    utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign')
+                };
+
+                console.log('Submitting client form:', formData);
+
+                // Submit to Tredicik backend
+                const response = await fetch(`${API_BASE_URL}/public/waitlist?tenant_domain=${TENANT_DOMAIN}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.detail || 'Submission failed');
+                }
+
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    clientFormElement.reset();
+
+                    // Track successful submission
+                    console.log('Waitlist entry created:', result.entry_id);
+                } else {
+                    showMessage(result.message, 'error');
+                }
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessage('Unable to submit form. Please try again or email us directly at admin@phya.co.za', 'error');
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+    }
+
+    // ========================================================================
+    // FORM SUBMISSIONS - SERVICE PROVIDER FORM
+    // ========================================================================
+
+    const providerFormElement = document.getElementById('providerForm');
+
+    if (providerFormElement) {
+        providerFormElement.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitButton = providerFormElement.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            try {
+                // Disable submit button
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting Application...';
+
+                // Collect form data
+                const formData = {
+                    email: document.getElementById('provider-email').value.trim(),
+                    name: document.getElementById('provider-name').value.trim(),
+                    phone: document.getElementById('provider-phone').value.trim(),
+                    segment: 'service_provider',
+                    location: document.getElementById('provider-city').value.trim(),
+                    message: document.getElementById('provider-message').value.trim() || null,
+                    pilot_program_applicant: true, // Service providers default to pilot program
+                    pilot_region: 'Gauteng',
+                    pilot_city: document.getElementById('provider-city').value.trim(),
+                    psira_number: document.getElementById('provider-psira').value.trim(),
+                    psira_grade: document.getElementById('provider-grade').value,
+                    years_experience: parseInt(document.getElementById('provider-experience').value),
+                    primary_role: document.getElementById('provider-role').value,
+                    armed_status: document.getElementById('provider-armed').value,
+                    referral_source: 'phya.co.za_landing_page',
+                    utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+                    utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
+                    utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign')
+                };
+
+                console.log('Submitting provider form:', formData);
+
+                // Submit to Tredicik backend
+                const response = await fetch(`${API_BASE_URL}/public/waitlist?tenant_domain=${TENANT_DOMAIN}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.detail || 'Submission failed');
+                }
+
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    providerFormElement.reset();
+
+                    // Track successful submission
+                    console.log('Service provider application created:', result.entry_id);
+                } else {
+                    showMessage(result.message, 'error');
+                }
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessage('Unable to submit application. Please try again or email us directly at admin@phya.co.za', 'error');
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+    }
+
+    // ========================================================================
+    // HELPER FUNCTIONS
+    // ========================================================================
+
+    // Show message helper
+    function showMessage(message, type) {
+        if (!formMessage) return;
+
+        formMessage.className = 'form-message mt-6 p-4 rounded-lg';
+
+        if (type === 'success') {
+            formMessage.classList.add('bg-green-900/50', 'border', 'border-green-500', 'text-green-200');
+        } else {
+            formMessage.classList.add('bg-red-900/50', 'border', 'border-red-500', 'text-red-200');
+        }
+
+        formMessage.textContent = message;
+        formMessage.style.display = 'block';
+
+        // Hide message after 7 seconds
+        setTimeout(function() {
+            formMessage.style.display = 'none';
+        }, 7000);
+
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // ========================================================================
+    // NAVIGATION & UI
+    // ========================================================================
+
     // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.nav-links a, .cta-button');
+    const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const hash = this.getAttribute('href');
@@ -34,191 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Header scroll effect
-    let lastScroll = 0;
-    const header = document.querySelector('.header-custom');
-
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
-            header.style.padding = '0.5rem 0';
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-        } else {
-            header.style.padding = '1rem 0';
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        }
-
-        lastScroll = currentScroll;
-    });
-
-    // Fade in elements on scroll
-    function fadeInOnScroll() {
-        const featureCards = document.querySelectorAll('.feature-card');
-        featureCards.forEach(card => {
-            const cardTop = card.getBoundingClientRect().top;
-            const cardBottom = card.getBoundingClientRect().bottom;
-            const viewportHeight = window.innerHeight;
-
-            if (cardBottom > 0 && cardTop < viewportHeight) {
-                card.classList.add('fade-in');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', fadeInOnScroll);
-    fadeInOnScroll(); // Initial check
-
-    // Form validation and submission
-    const waitlistForm = document.getElementById('waitlistForm');
-    const formMessage = document.getElementById('formMessage');
-    const submitButton = waitlistForm.querySelector('.submit-button');
-
-    waitlistForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Get form values
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-
-        // Basic validation
-        if (name === '') {
-            showMessage('Please enter your name', 'error');
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showMessage('Please enter a valid email address', 'error');
-            return;
-        }
-
-        // Disable submit button
-        submitButton.disabled = true;
-        submitButton.textContent = 'Joining...';
-
-        // Simulate form submission (replace with actual API call)
-        setTimeout(function() {
-            // Store in localStorage for now
-            const waitlistData = {
-                name: name,
-                email: email,
-                phone: phone,
-                timestamp: new Date().toISOString()
-            };
-
-            // Get existing waitlist or create new array
-            let waitlist = JSON.parse(localStorage.getItem('phya_waitlist')) || [];
-
-            // Check if email already exists
-            const emailExists = waitlist.some(entry => entry.email === email);
-
-            if (emailExists) {
-                showMessage('This email is already on the waiting list!', 'error');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Join Waiting List';
-                return;
-            }
-
-            // Add new entry
-            waitlist.push(waitlistData);
-            localStorage.setItem('phya_waitlist', JSON.stringify(waitlist));
-
-            // Show success message
-            showMessage('🎉 Success! You\'re on the waiting list. We\'ll be in touch soon!', 'success');
-
-            // Reset form
-            waitlistForm.reset();
-
-            // Re-enable button
-            submitButton.disabled = false;
-            submitButton.textContent = 'Join Waiting List';
-
-            // Log for development
-            console.log('Waitlist entry added:', waitlistData);
-            console.log('Total entries:', waitlist.length);
-
-        }, 1500);
-    });
-
-    // Email validation helper
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    // Show message helper
-    function showMessage(message, type) {
-        formMessage.className = 'form-message';
-        formMessage.classList.add(type);
-        formMessage.textContent = message;
-        formMessage.style.display = 'block';
-
-        // Hide message after 5 seconds
-        setTimeout(function() {
-            formMessage.style.display = 'none';
-        }, 5000);
-    }
-
-    // Input focus effects
-    const formInputs = document.querySelectorAll('.form-group input');
-    formInputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-
-        input.addEventListener('blur', function() {
-            this.parentElement.classList.remove('focused');
-        });
-    });
-
-    // Get waitlist count
-    function getWaitlistCount() {
-        const waitlist = JSON.parse(localStorage.getItem('phya_waitlist')) || [];
-        return waitlist.length;
-    }
-
-    // Optional: Display waitlist count
-    const waitlistCount = getWaitlistCount();
-    if (waitlistCount > 0) {
-        console.log(`Current waitlist size: ${waitlistCount} members`);
-    }
-
-    // Easter egg: Konami code
-    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-    let konamiIndex = 0;
-
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
-                activateEasterEgg();
-                konamiIndex = 0;
-            }
-        } else {
-            konamiIndex = 0;
-        }
-    });
-
-    function activateEasterEgg() {
-        document.body.classList.add('party-mode');
-        showMessage('🎊 You found the secret! You\'re getting VIP access!', 'success');
-
-        // Add some fun animations
-        const heroSection = document.querySelector('.hero-section');
-        heroSection.style.animation = 'rainbow 3s infinite';
-
-        setTimeout(function() {
-            document.body.classList.remove('party-mode');
-            heroSection.style.animation = '';
-        }, 5000);
-    }
-
-    // Add loading animation complete class
-    setTimeout(function() {
-        document.body.classList.add('loaded');
-    }, 100);
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -316,4 +363,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Add loading animation complete class
+    setTimeout(function() {
+        document.body.classList.add('loaded');
+    }, 100);
 });

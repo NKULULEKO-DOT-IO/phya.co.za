@@ -470,30 +470,139 @@
     <!-- Contact/Waitlist Section -->
     <section id="contact" class="py-20 bg-[#212121]">
         <div class="container mx-auto px-6 lg:px-24">
-            <div class="max-w-2xl mx-auto">
+            <div class="max-w-3xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Contact Phya</h2>
-                    <p class="text-gray-400 text-xl">Future of protection starts here.</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Join Phya</h2>
+                    <p class="text-gray-400 text-xl">Be part of the future of personal protection.</p>
                 </div>
 
-                <form id="waitlistForm" class="space-y-6">
+                <!-- Tab Buttons -->
+                <div class="flex gap-4 mb-8">
+                    <button type="button" id="clientTabBtn" class="flex-1 px-6 py-4 bg-gradient-to-r from-gold to-gold-light text-black font-semibold rounded-lg transition-all duration-300 tab-button active">
+                        Join as Client
+                    </button>
+                    <button type="button" id="providerTabBtn" class="flex-1 px-6 py-4 bg-[#1a1a1a] text-gray-400 border border-gray-700 font-semibold rounded-lg hover:border-gold transition-all duration-300 tab-button">
+                        Apply as Service Provider
+                    </button>
+                </div>
+
+                <!-- Client Form -->
+                <form id="clientForm" class="space-y-6 tab-content active">
+                    <input type="hidden" id="client-segment" value="client">
+
                     <div>
-                        <label class="block text-gray-400 text-sm mb-2">Name</label>
-                        <input type="text" id="name" placeholder="Jane Smith" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                        <label class="block text-gray-400 text-sm mb-2">Full Name *</label>
+                        <input type="text" id="client-name" placeholder="Jane Smith" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
                     </div>
 
                     <div>
-                        <label class="block text-gray-400 text-sm mb-2">Email</label>
-                        <input type="email" id="email" placeholder="jane@framer.com" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                        <label class="block text-gray-400 text-sm mb-2">Email *</label>
+                        <input type="email" id="client-email" placeholder="jane@example.com" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
                     </div>
 
                     <div>
-                        <label class="block text-gray-400 text-sm mb-2">Message</label>
-                        <textarea id="message" rows="4" placeholder="Your message..." class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors resize-none"></textarea>
+                        <label class="block text-gray-400 text-sm mb-2">Phone Number</label>
+                        <input type="tel" id="client-phone" placeholder="+27 82 123 4567" class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">City</label>
+                        <input type="text" id="client-city" placeholder="Johannesburg" class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div class="flex items-start space-x-3 p-4 bg-[#1a1a1a] rounded-lg border border-gray-700">
+                        <input type="checkbox" id="client-pilot" class="mt-1 w-5 h-5 rounded border-gray-600 text-gold focus:ring-gold focus:ring-offset-0 bg-[#1a1a1a]">
+                        <label for="client-pilot" class="text-gray-400 text-sm cursor-pointer">
+                            I'm interested in joining the <span class="text-gold font-semibold">Gauteng Pilot Program</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Additional Notes (Optional)</label>
+                        <textarea id="client-message" rows="3" placeholder="Tell us about your protection needs..." class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors resize-none"></textarea>
                     </div>
 
                     <button type="submit" class="w-full px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/50 transition-all duration-300 transform hover:scale-105">
-                        Submit
+                        Join Waitlist
+                    </button>
+                </form>
+
+                <!-- Service Provider Form -->
+                <form id="providerForm" class="space-y-6 tab-content hidden">
+                    <input type="hidden" id="provider-segment" value="service_provider">
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Full Name *</label>
+                        <input type="text" id="provider-name" placeholder="John Doe" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Email Address *</label>
+                        <input type="email" id="provider-email" placeholder="john@example.com" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Phone Number *</label>
+                        <input type="tel" id="provider-phone" placeholder="+27 82 123 4567" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">PSIRA Number *</label>
+                        <input type="text" id="provider-psira" placeholder="PSIRA Registration Number" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">PSIRA Grade *</label>
+                        <select id="provider-grade" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white focus:outline-none focus:border-gold transition-colors">
+                            <option value="">Select Grade</option>
+                            <option value="A">Grade A</option>
+                            <option value="B">Grade B</option>
+                            <option value="C">Grade C</option>
+                            <option value="D">Grade D</option>
+                            <option value="E">Grade E</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Armed or Unarmed *</label>
+                        <select id="provider-armed" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white focus:outline-none focus:border-gold transition-colors">
+                            <option value="">Select Status</option>
+                            <option value="armed">Armed</option>
+                            <option value="unarmed">Unarmed</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Years of Experience *</label>
+                        <input type="number" id="provider-experience" placeholder="5" min="0" max="50" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Primary Role *</label>
+                        <select id="provider-role" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white focus:outline-none focus:border-gold transition-colors">
+                            <option value="">Select Role</option>
+                            <option value="CPO">Close Protection Officer (CPO)</option>
+                            <option value="Security Guard">Security Guard</option>
+                            <option value="Reaction Officer">Reaction Officer</option>
+                            <option value="Armed Response">Armed Response</option>
+                            <option value="Executive Protection">Executive Protection</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">City/Town *</label>
+                        <input type="text" id="provider-city" placeholder="Johannesburg" required class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2">Additional Notes (Optional)</label>
+                        <textarea id="provider-message" rows="3" placeholder="Tell us about your experience and qualifications..." class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/50 transition-all duration-300 transform hover:scale-105">
+                        Submit Application
                     </button>
                 </form>
 
