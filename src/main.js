@@ -8,7 +8,7 @@ import './style.css';
 // Configuration
 const API_BASE_URL = 'https://backend.tredicik.com/api/v1'; // Production
 // const API_BASE_URL = 'http://localhost:8080/api/v1'; // Development
-const TENANT_DOMAIN = 'phya';
+const TENANT_DOMAIN = 'phya.co.za'; // Full domain for uniqueness
 
 // Console welcome message
 console.log('%cWelcome to PHYA!', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
