@@ -4,9 +4,10 @@
  */
 
 import './style.css';
+import { toast } from 'sonner';
 
 // Configuration
-const API_BASE_URL = 'https://backend.tredicik.com/api/v1'; // Production
+const API_BASE_URL = 'https://api-dev.tredicik.com/api/v1'; // Cloudflare Tunnel
 // const API_BASE_URL = 'http://localhost:8080/api/v1'; // Development
 const TENANT_DOMAIN = 'phya.co.za'; // Full domain for uniqueness
 
@@ -65,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================================================
 
     const clientFormElement = document.getElementById('clientForm');
-    const formMessage = document.getElementById('formMessage');
 
     if (clientFormElement) {
         clientFormElement.addEventListener('submit', async function(e) {
@@ -114,18 +114,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (result.success) {
-                    showMessage(result.message, 'success');
+                    toast.success(result.message || 'Successfully joined the waitlist!');
                     clientFormElement.reset();
 
                     // Track successful submission
                     console.log('Waitlist entry created:', result.entry_id);
                 } else {
-                    showMessage(result.message, 'error');
+                    toast.error(result.message || 'Failed to join waitlist');
                 }
 
             } catch (error) {
                 console.error('Error submitting form:', error);
-                showMessage('Unable to submit form. Please try again or email us directly at admin@phya.co.za', 'error');
+                toast.error('Unable to submit form. Please try again or email us directly at admin@phya.co.za');
             } finally {
                 // Re-enable button
                 submitButton.disabled = false;
@@ -192,52 +192,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (result.success) {
-                    showMessage(result.message, 'success');
+                    toast.success(result.message || 'Application submitted successfully!');
                     providerFormElement.reset();
 
                     // Track successful submission
                     console.log('Service provider application created:', result.entry_id);
                 } else {
-                    showMessage(result.message, 'error');
+                    toast.error(result.message || 'Failed to submit application');
                 }
 
             } catch (error) {
                 console.error('Error submitting form:', error);
-                showMessage('Unable to submit application. Please try again or email us directly at admin@phya.co.za', 'error');
+                toast.error('Unable to submit application. Please try again or email us directly at admin@phya.co.za');
             } finally {
                 // Re-enable button
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
             }
         });
-    }
-
-    // ========================================================================
-    // HELPER FUNCTIONS
-    // ========================================================================
-
-    // Show message helper
-    function showMessage(message, type) {
-        if (!formMessage) return;
-
-        formMessage.className = 'form-message mt-6 p-4 rounded-lg';
-
-        if (type === 'success') {
-            formMessage.classList.add('bg-green-900/50', 'border', 'border-green-500', 'text-green-200');
-        } else {
-            formMessage.classList.add('bg-red-900/50', 'border', 'border-red-500', 'text-red-200');
-        }
-
-        formMessage.textContent = message;
-        formMessage.style.display = 'block';
-
-        // Hide message after 7 seconds
-        setTimeout(function() {
-            formMessage.style.display = 'none';
-        }, 7000);
-
-        // Scroll to message
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     // ========================================================================
