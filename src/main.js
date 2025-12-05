@@ -7,9 +7,11 @@ import './style.css';
 import { toast } from 'sonner';
 
 // Configuration
-const API_BASE_URL = 'https://api-dev.tredicik.com/api/v1'; // Cloudflare Tunnel
-// const API_BASE_URL = 'http://localhost:8080/api/v1'; // Development
-const TENANT_DOMAIN = 'phya.co.za'; // Full domain for uniqueness
+// API uses shared Tredicik infrastructure (multi-tenant backend)
+const API_BASE_URL = 'https://api-dev.tredicik.com/api/v1'; // Development/Testing
+// const API_BASE_URL = 'https://api.tredicik.com/api/v1'; // Production (uncomment for launch)
+// const API_BASE_URL = 'http://localhost:8080/api/v1'; // Local Development
+const TENANT_DOMAIN = 'phya.co.za'; // Tenant identifier for backend
 
 // Simple logging utility
 const log = {
