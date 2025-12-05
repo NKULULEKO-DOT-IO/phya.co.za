@@ -11,6 +11,19 @@ const API_BASE_URL = 'https://api-dev.tredicik.com/api/v1'; // Cloudflare Tunnel
 // const API_BASE_URL = 'http://localhost:8080/api/v1'; // Development
 const TENANT_DOMAIN = 'phya.co.za'; // Full domain for uniqueness
 
+// Simple logging utility
+const log = {
+    info: (message, data = {}) => {
+        console.log(`[PHYA] ${message}`, data);
+    },
+    error: (message, error, data = {}) => {
+        console.error(`[PHYA ERROR] ${message}`, { error: error.message || error, ...data });
+    },
+    success: (message, data = {}) => {
+        console.log(`[PHYA SUCCESS] ${message}`, data);
+    }
+};
+
 // Console welcome message
 console.log('%cWelcome to PHYA!', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
 console.log('%cWe\'re building something amazing. Stay tuned!', 'color: #666; font-size: 14px;');
@@ -96,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign')
                 };
 
-                console.log('Submitting client form:', formData);
+                log.info('Submitting client form', { email: formData.email, pilot: formData.pilot_program_applicant });
 
                 // Submit to Tredicik backend
                 const response = await fetch(`${API_BASE_URL}/public/waitlist?tenant_domain=${TENANT_DOMAIN}`, {
@@ -110,21 +123,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 const result = await response.json();
 
                 if (!response.ok) {
+                    log.error('API returned error', { status: response.status, detail: result.detail });
                     throw new Error(result.detail || 'Submission failed');
                 }
 
                 if (result.success) {
+                    log.success('Client waitlist entry created', { entry_id: result.entry_id, email: formData.email });
                     toast.success(result.message || 'Successfully joined the waitlist!');
                     clientFormElement.reset();
-
-                    // Track successful submission
-                    console.log('Waitlist entry created:', result.entry_id);
                 } else {
+                    log.error('Submission failed', result.message);
                     toast.error(result.message || 'Failed to join waitlist');
                 }
 
             } catch (error) {
-                console.error('Error submitting form:', error);
+                log.error('Error submitting client form', error, { email: formData.email });
                 toast.error('Unable to submit form. Please try again or email us directly at admin@phya.co.za');
             } finally {
                 // Re-enable button
@@ -174,7 +187,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign')
                 };
 
-                console.log('Submitting provider form:', formData);
+                log.info('Submitting service provider form', {
+                    email: formData.email,
+                    psira_grade: formData.psira_grade,
+                    years_experience: formData.years_experience
+                });
 
                 // Submit to Tredicik backend
                 const response = await fetch(`${API_BASE_URL}/public/waitlist?tenant_domain=${TENANT_DOMAIN}`, {
@@ -188,21 +205,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 const result = await response.json();
 
                 if (!response.ok) {
+                    log.error('API returned error', { status: response.status, detail: result.detail });
                     throw new Error(result.detail || 'Submission failed');
                 }
 
                 if (result.success) {
+                    log.success('Service provider application created', {
+                        entry_id: result.entry_id,
+                        email: formData.email,
+                        psira_grade: formData.psira_grade
+                    });
                     toast.success(result.message || 'Application submitted successfully!');
                     providerFormElement.reset();
-
-                    // Track successful submission
-                    console.log('Service provider application created:', result.entry_id);
                 } else {
+                    log.error('Submission failed', result.message);
                     toast.error(result.message || 'Failed to submit application');
                 }
 
             } catch (error) {
-                console.error('Error submitting form:', error);
+                log.error('Error submitting service provider form', error, { email: formData.email });
                 toast.error('Unable to submit application. Please try again or email us directly at admin@phya.co.za');
             } finally {
                 // Re-enable button
