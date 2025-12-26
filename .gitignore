@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Client-specific and internal documentation
+CLIENT_NOTES.md
+*-SUMMARY.md
+*-GUIDE.md
+*-COMPLETE.md
+*-FIXED.md
+deployment-info.md

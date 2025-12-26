@@ -32,11 +32,17 @@ aws s3 sync dist/ s3://$BUCKET_NAME/ \
     --cache-control "public, max-age=31536000" \
     --exclude "*.html"
 
-# Upload HTML files with no cache
-aws s3 cp dist/index.html s3://$BUCKET_NAME/index.html \
-    --region $REGION \
-    --cache-control "no-cache" \
-    --content-type "text/html"
+# Upload all HTML files with no cache (including subdirectories)
+echo "Uploading HTML files with no-cache headers..."
+find dist -name "*.html" -type f | while read -r htmlfile; do
+    # Get the relative path from dist/
+    relative_path="${htmlfile#dist/}"
+    echo "  → Uploading $relative_path"
+    aws s3 cp "$htmlfile" "s3://$BUCKET_NAME/$relative_path" \
+        --region $REGION \
+        --cache-control "no-cache" \
+        --content-type "text/html"
+done
 
 echo "Files uploaded to S3 successfully!"
 
